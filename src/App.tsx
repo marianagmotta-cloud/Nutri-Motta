@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { authClient } from './lib/auth-client';
 import { AuthPage } from './components/AuthPage';
 import { Dashboard } from './components/Dashboard';
-import { Activity } from 'lucide-react';
+import { NutriLogo } from './components/NutriLogo';
 
 export default function App() {
   const [user, setUser] = useState<any>(null);
@@ -28,16 +28,16 @@ export default function App() {
     checkSession();
   }, []);
 
-  // Visual de carregamento elegante para prevenir telas brancas
+  // Visual de carregamento com o logotipo animado alegre
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4">
-        <div className="w-14 h-14 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-600/20 mb-4 animate-bounce">
-          <Activity className="w-7 h-7" />
-        </div>
-        <div className="flex items-center gap-2 text-slate-600 font-medium text-sm">
-          <div className="w-4 h-4 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin" />
-          <span>Carregando Feriani Nutri...</span>
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50/80 via-amber-50/50 to-teal-50/80 flex flex-col items-center justify-center p-4">
+        <div className="p-8 bg-white/80 backdrop-blur-md rounded-3xl shadow-xl shadow-emerald-900/5 border border-emerald-100/50 flex flex-col items-center animate-float">
+          <NutriLogo size="lg" />
+          <div className="flex items-center gap-2 text-emerald-800 font-semibold text-xs mt-6">
+            <div className="w-3.5 h-3.5 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+            <span>Iniciando ambiente seguro...</span>
+          </div>
         </div>
       </div>
     );

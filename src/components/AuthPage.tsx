@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { authClient } from '../lib/auth-client';
 import { syncNutricionista } from '../lib/db';
-import { Activity, Lock, Mail, User, ShieldCheck, ArrowRight, AlertCircle } from 'lucide-react';
+import { NutriLogo } from './NutriLogo';
+import { Lock, Mail, User, ShieldCheck, ArrowRight, AlertCircle } from 'lucide-react';
 
 interface AuthPageProps {
   onSuccess: (user: any) => void;
@@ -89,19 +90,19 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-white flex flex-col justify-center items-center p-4 sm:p-6">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50/70 via-amber-50/40 to-teal-50/70 flex flex-col justify-center items-center p-4 sm:p-6 relative overflow-hidden">
+      {/* Elementos decorativos de fundo alegres */}
+      <div className="absolute top-10 left-10 w-72 h-72 bg-emerald-200/30 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-amber-200/30 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="w-full max-w-md relative z-10">
         {/* Topo / Logo */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-emerald-600 text-white shadow-lg shadow-emerald-600/20 mb-3">
-            <Activity className="w-8 h-8" />
-          </div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-800">Feriani Nutri</h1>
-          <p className="text-sm text-slate-500 mt-1 font-medium">Gestão Nutricional Integrada</p>
+        <div className="flex flex-col items-center justify-center mb-8">
+          <NutriLogo size="xl" />
         </div>
 
         {/* Card do Formulário */}
-        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 p-8">
+        <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl shadow-emerald-950/5 border border-emerald-100/60 p-8 sm:p-9 transition-all">
           <div className="mb-6">
             <h2 className="text-xl font-bold text-slate-900">
               {isLogin ? 'Acessar sua conta' : 'Criar nova conta'}
